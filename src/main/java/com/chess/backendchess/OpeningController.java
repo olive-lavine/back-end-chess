@@ -18,25 +18,48 @@ public class OpeningController {
         this.openingService = openingService;
     }
 
-    @RequestMapping("/opening")
+    @RequestMapping("/openings")
     public List<Opening> getAllOpenings(){
         return openingService.getOpenings();
     }
 
-    @RequestMapping("/opening/names")
-    public List<NameView> getOpenings(){
-        return openingService.getNarrowOpenings();
+    @RequestMapping("/openings/parent")
+    public List<Opening> getStartingOpenings(){
+        return openingService.getNextOpenings(null);
+    }
+    @RequestMapping("/openings/parent/{parentId}")
+    public List<Opening> getNextOpenings(@PathVariable Long parentId){
+        return openingService.getNextOpenings(parentId);
     }
 
-    @RequestMapping("/opening/{id}")
+    @RequestMapping("/openings/{id}")
     public Optional<Opening> getOpening(@PathVariable Long id){
         return openingService.getOpening(id);
     }
 
-
-    @RequestMapping(method= RequestMethod.POST, value="/opening")
+    @RequestMapping(method= RequestMethod.POST, value="/openings")
     public void addOpening(@RequestBody Opening opening){
         openingService.addOpening(opening);
     }
 
+    @RequestMapping(method= RequestMethod.PATCH, value="/openings/{id}")
+    public void updateOpening(@PathVariable Long id, @RequestBody Opening opening){
+        openingService.updateOpening(id, opening);
+    }
+
+    @RequestMapping(method= RequestMethod.DELETE, value="/openings/{id}")
+    public void deleteOpening(@PathVariable Long id){
+        openingService.deleteOpening(id);
+    }
+
 }
+
+
+
+
+
+//    @RequestMapping("/opening/names")
+//    public List<NameView> getOpenings(){
+//        return openingService.getNarrowOpenings();
+//    }
+

@@ -21,14 +21,8 @@ public class Opening {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private String sequence;
+    private String pgn;
+    private String parent;
+    private Long parentId;
 
-//    public Opening(){}
-//
-//
-//    public Opening(Long id, String name, String sequence) {
-//        this.id = id;
-//        this.name = name;
-//        this.sequence = sequence;
-//    }
 }
