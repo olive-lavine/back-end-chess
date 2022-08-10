@@ -1,11 +1,7 @@
 package com.chess.backendchess;
 
-import antlr.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,7 +34,8 @@ public class OpeningService {
 //        update.setId(opening.getId());
 //        update.setName(opening.getName());
 //        update.setParent(opening.getParent());
-        update.setParentId(opening.getParentId());
+//        update.setParentId(opening.getParentId());
+        update.setHasChild(opening.getHasChild());
         openingRepository.save(update);
 
 

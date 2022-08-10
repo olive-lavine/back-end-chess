@@ -22,7 +22,7 @@ public class Opening {
     private Long id;
     private String name;
     private String pgn;
-    private String parent;
     private Long parentId;
+    private Boolean hasChild;
 
 }
