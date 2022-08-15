@@ -1,9 +1,10 @@
-package com.chess.backendchess;
+package com.chess.backendchess.controller;
 
+import com.chess.backendchess.models.Opening;
+import com.chess.backendchess.service.OpeningService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,36 +19,36 @@ public class OpeningController {
         this.openingService = openingService;
     }
 
-    @RequestMapping("/openings")
+    @GetMapping("/openings")
     public List<Opening> getAllOpenings(){
         return openingService.getOpenings();
     }
 
-    @RequestMapping("/openings/parent")
+    @GetMapping("/openings/parent")
     public List<Opening> getStartingOpenings(){
         return openingService.getNextOpenings(null);
     }
-    @RequestMapping("/openings/parent/{parentId}")
+    @GetMapping("/openings/parent/{parentId}")
     public List<Opening> getNextOpenings(@PathVariable Long parentId){
         return openingService.getNextOpenings(parentId);
     }
 
-    @RequestMapping("/openings/{id}")
+    @GetMapping("/openings/{id}")
     public Optional<Opening> getOpening(@PathVariable Long id){
         return openingService.getOpening(id);
     }
 
-    @RequestMapping(method= RequestMethod.POST, value="/openings")
+    @PostMapping("/openings")
     public void addOpening(@RequestBody Opening opening){
         openingService.addOpening(opening);
     }
 
-    @RequestMapping(method= RequestMethod.PATCH, value="/openings/{id}")
+    @PatchMapping("/openings/{id}")
     public void updateOpening(@PathVariable Long id, @RequestBody Opening opening){
         openingService.updateOpening(id, opening);
     }
 
-    @RequestMapping(method= RequestMethod.DELETE, value="/openings/{id}")
+    @DeleteMapping("/openings/{id}")
     public void deleteOpening(@PathVariable Long id){
         openingService.deleteOpening(id);
     }
@@ -56,10 +57,4 @@ public class OpeningController {
 
 
 
-
-
-//    @RequestMapping("/opening/names")
-//    public List<NameView> getOpenings(){
-//        return openingService.getNarrowOpenings();
-//    }
 

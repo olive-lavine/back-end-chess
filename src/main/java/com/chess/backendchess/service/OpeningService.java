@@ -1,5 +1,7 @@
-package com.chess.backendchess;
+package com.chess.backendchess.service;
 
+import com.chess.backendchess.repository.OpeningRepository;
+import com.chess.backendchess.models.Opening;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -7,7 +9,6 @@ import java.util.Optional;
 
 @Service
 public class OpeningService {
-
     @Autowired
     private OpeningRepository openingRepository;
 
@@ -21,8 +22,7 @@ public class OpeningService {
 
     public Optional<Opening> getOpening(Long id){
         return openingRepository.findById(id);
-//        Optional<Opening> opening = openingRepository.findById(id);
-//        return opening != null ? Optional.of(opening) : Optional.empty();
+
     }
 
     public void addOpening(Opening opening){
@@ -31,24 +31,14 @@ public class OpeningService {
 
     public void updateOpening(Long id, Opening opening){
         Opening update = openingRepository.findById(id).orElseThrow();
-//        update.setId(opening.getId());
-//        update.setName(opening.getName());
-//        update.setParent(opening.getParent());
-//        update.setParentId(opening.getParentId());
+        update.setName(opening.getName());
+        update.setParentId(opening.getParentId());
         update.setHasChild(opening.getHasChild());
         openingRepository.save(update);
-
-
     }
-
     public void deleteOpening(Long id){
         openingRepository.deleteById(id);
     }
 
 }
-
-
-//    public List<NameView> getNarrowOpenings(){
-//        return openingRepository.findBy();
-//    }
 

@@ -1,4 +1,4 @@
-package com.chess.backendchess;
+package com.chess.backendchess.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,9 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter
