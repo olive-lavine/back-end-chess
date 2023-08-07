@@ -2,6 +2,9 @@ package com.chess.backendchess.controller;
 
 import com.chess.backendchess.models.Player;
 import com.chess.backendchess.service.PlayerService;
+
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,8 +25,8 @@ public class PlayerController {
     }
 
     @GetMapping("/players")
-    public Player getPlayer(@RequestParam String name){
-        return playerService.getPlayer(name);
+    public Optional<Player> getPlayer(@RequestParam Long id){
+        return playerService.getPlayer(id);
     }
 
 

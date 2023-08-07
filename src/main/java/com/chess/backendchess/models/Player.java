@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -18,7 +17,6 @@ import java.util.Set;
 public class Player {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="player_id")
     private Long player_id;
     private String name;
