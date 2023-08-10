@@ -28,4 +28,9 @@ public class CustomOpeningController {
     public void addOpening(@RequestBody CustomOpening newOpening){
         customOpeningService.addOpening(newOpening);
     }
+    
+    @DeleteMapping("/players/custom/{id}")
+    public void deleteOpening(@PathVariable Long id){
+        customOpeningService.deleteOpening(id);
+    }
 }

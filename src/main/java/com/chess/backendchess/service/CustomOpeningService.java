@@ -20,6 +20,11 @@ public class CustomOpeningService {
     public void addOpening(CustomOpening newOpening){
         customOpeningRepository.save(newOpening);
     }
+    
+    public void deleteOpening(Long id){
+        customOpeningRepository.deleteById(id);
+
+    }
 
     public Set<CustomOpening> getPlayersOpenings(Long id) {
         Optional<Player> player = playerRepository.findById(id);
